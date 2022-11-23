@@ -7,20 +7,20 @@ function Navbar() {
 
   const Link = ({route, children}:{route: string, children: (isActive: object, nav: () => void) => JSX.Element}) => {
     const isActive = match(route) ? {color: 'blue'} : {color: 'red'}
-    const link = () => navigate(route)
-    return children(isActive, link)
+    const goToLink = () => navigate(route)
+    return children(isActive, goToLink)
   }
   
   return (
     <ul>
       <Link route='/'>
-        {(isActive, link) => (<li style={isActive} onClick={link}>Main</li>)}
+        {(isActive, goToLink) => (<li style={isActive} onClick={goToLink}>Main</li>)}
       </Link>
       <Link route='/about'>
-        {(isActive, link) => (<li style={isActive} onClick={link}>About</li>)}
+        {(isActive, goToLink) => (<li style={isActive} onClick={goToLink}>About</li>)}
       </Link>
       <Link route='/profile'>
-        {(isActive, link) => (<li style={isActive} onClick={link}>Profile</li>)}
+        {(isActive, goToLink) => (<li style={isActive} onClick={goToLink}>Profile</li>)}
       </Link>
     </ul>
   )
